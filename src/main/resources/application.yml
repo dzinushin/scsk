@@ -12,6 +12,7 @@ spring:
           min-partition-count: 3
           auto-create-topics: true
       bindings:
+
         consumer1-in-0:
           destination: topic1
           group: ${spring.application.name}.topic1
@@ -19,5 +20,10 @@ spring:
           destination: topic2
           group: ${spring.application.name}.topic2
 
+        producer1-out-0:
+          destination: topic1
+        producer2-out-0:
+          destination: topic2
+
 server:
-  port: 8081
+  port: 8080
