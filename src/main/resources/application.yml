@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: scsk
+
+  cloud:
+    function:
+      definition: consumer1;consumer2
+
+    stream:
+      kafka:
+        binder:
+          min-partition-count: 3
+          auto-create-topics: true
+      bindings:
+        consumer1-in-0:
+          destination: topic1
+          group: ${spring.application.name}.topic1
+        consumer2-in-0:
+          destination: topic2
+          group: ${spring.application.name}.topic2
+
+server:
+  port: 8081
